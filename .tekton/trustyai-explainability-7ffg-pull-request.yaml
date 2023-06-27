@@ -165,7 +165,7 @@ spec:
       runAfter:
       - clone-repository
       taskRef:
-        bundle: quay.io/redhat-appstudio-tekton-catalog/task-prefetch-dependencies:0.1@sha256:8232d76d919a5b88609abd48c32fae1a91f4c712a49804d0cb80fa6a4b360b48
+        bundle: quay.io/redhat-appstudio-tekton-catalog/task-prefetch-dependencies:0.1@sha256:498a081cc7396e5df4e1815ab92ff9090caecd1440720403b377001fb5151db7
         name: prefetch-dependencies
       when:
       - input: $(params.hermetic)
@@ -192,7 +192,7 @@ spec:
       runAfter:
       - prefetch-dependencies
       taskRef:
-        bundle: quay.io/redhat-appstudio-tekton-catalog/task-buildah:0.1@sha256:86c1cb114c11b7d2d3958a7ddcfa141c4f369dadb1e67d3af2f35ef0f7796071
+        bundle: quay.io/redhat-appstudio-tekton-catalog/task-buildah:0.1@sha256:50c52333fdf719dc9fe016e5214191f9cfe694262972f4c08f13b3fe62fb3640
         name: buildah
       when:
       - input: $(tasks.init.results.build)
@@ -225,7 +225,7 @@ spec:
       runAfter:
       - inspect-image
       taskRef:
-        bundle: quay.io/redhat-appstudio-tekton-catalog/task-label-check:0.1@sha256:119c46c41e05869ff60738c762b81afea904db6796a598a144af1362657c167b
+        bundle: quay.io/redhat-appstudio-tekton-catalog/task-label-check:0.1@sha256:0c0739fdda24cd1e3587bbab9b07d4493efc21884baac7723f4b446e95bf1fd3
         name: label-check
       when:
       - input: $(params.skip-checks)
@@ -242,7 +242,7 @@ spec:
       runAfter:
       - inspect-image
       taskRef:
-        bundle: quay.io/redhat-appstudio-tekton-catalog/task-label-check:0.1@sha256:119c46c41e05869ff60738c762b81afea904db6796a598a144af1362657c167b
+        bundle: quay.io/redhat-appstudio-tekton-catalog/task-label-check:0.1@sha256:0c0739fdda24cd1e3587bbab9b07d4493efc21884baac7723f4b446e95bf1fd3
         name: label-check
       when:
       - input: $(params.skip-optional)
@@ -290,7 +290,7 @@ spec:
       runAfter:
       - clone-repository
       taskRef:
-        bundle: quay.io/redhat-appstudio-tekton-catalog/task-sast-snyk-check:0.1@sha256:2847ad8183aa020dfda9398cc4b0bcb2a54895d30f1012dddb3c4b6e01d156ae
+        bundle: quay.io/redhat-appstudio-tekton-catalog/task-sast-snyk-check:0.1@sha256:2d3369bdbe3b5d37f6528d3048cb894e37c191c6db0395054b6b01d94d662118
         name: sast-snyk-check
       when:
       - input: $(params.skip-checks)
